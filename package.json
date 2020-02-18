@@ -1,0 +1,11 @@
+{
+    "name": "music-player",
+    "version": "0.0.1",
+    "main": "main.js",
+    "devDependencies": {
+        "electron": "^8.0.1"
+    },
+    "scripts": {
+        "start": "electron ."
+    }
+}

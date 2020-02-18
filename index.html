@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Music Player</title>
+        <link href="styles.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div id="blurred-background"></div>
+        <center>
+            <div id="album-art">
+                <img src="baseline_album_white_48dp.png" class="album-art-image"/>
+            </div>
+
+            <div id="song-info">
+                <h3>Song Title</h3>
+                <h5>Artist</h5>
+            </div>
+        </center>
+        <div id="controls">
+            <div id="play-controls"></div>
+            <div id="seek-controls">
+                <p id="current-play-time">00:00</p>
+                <center>
+                    <input type="range" min="0" max="1000" value="370" class="seeker"/>
+                </center>
+                <p id="audio-length">00:00</p>
+            </div>
+
+        </div>
+    </body>
+
+</html>
