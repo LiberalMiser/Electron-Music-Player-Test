@@ -6,6 +6,7 @@
     </head>
     <body>
         <div id="blurred-background"></div>
+
         <center>
             <div id="album-art">
                 <img src="baseline_album_white_48dp.png" class="album-art-image"/>
@@ -16,17 +17,51 @@
                 <h5>Artist</h5>
             </div>
         </center>
+
         <div id="controls">
-            <div id="play-controls"></div>
-            <div id="seek-controls">
-                <p id="current-play-time">00:00</p>
-                <center>
-                    <input type="range" min="0" max="1000" value="370" class="seeker"/>
-                </center>
-                <p id="audio-length">00:00</p>
+            <div id="song-selection-controls">
+                <ul>
+                    <li>
+                        <button name="shuffle-button" id="shuffle-button" class="control-button">
+                            <img src="baseline_shuffle_white_48dp.png"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button name="repeat-button" id="repeat-button" class="control-button">
+                            <img src="baseline_repeat_white_48dp.png"/>
+                        </button>
+                    </li>
+                </ul>
             </div>
 
+            <div id="play-controls">
+                <center>
+                    <button name="previous-button" id="previous-button" class="control-button">
+                        <img src="baseline_skip_previous_white_48dp.png"/>
+                    </button>
+                    <button name="play-button" id="play-button" class="control-button">
+                        <img src="baseline_play_arrow_white_48dp.png"/>
+                    </button>
+                    <button name="next-button" id="next-button" class="control-button">
+                        <img src="baseline_skip_next_white_48dp.png"/>
+                    </button>
+                </center>
+            </div>
+            <div id="volume-controls">
+                <button name="mute-button" id="mute-button" class="control-button">
+                    <img src="baseline_volume_off_white_48dp.png"/>
+                </button>
+                <input type="range" min="0" max="100" value="75" id="volume" class="slider"/>
+                <p id="current-volume">75%</p>
+            </div>
+        </div>
+
+        <div id="seek-controls">
+            <p id="current-play-time">00:00</p>
+            <center>
+                <input type="range" min="0" max="1000" value="370" class="slider" id="seeker"/>
+            </center>
+            <p id="audio-length">00:00</p>
         </div>
     </body>
-
 </html>

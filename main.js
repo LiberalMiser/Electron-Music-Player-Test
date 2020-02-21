@@ -13,9 +13,9 @@ function createWindow() {
 
     //win.setIcon('icon 2.png');
     //win.setOpacity(0.9);
-    //win.maximize();
+    win.maximize();
     win.setMenu(null);
-    win.setSize(1000, 650);
+    win.setSize(1280, 720);
 
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'), 
@@ -27,7 +27,7 @@ function createWindow() {
         win = null;
     })
 
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 }
 
 app.on('ready', createWindow);

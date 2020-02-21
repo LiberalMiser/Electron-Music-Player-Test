@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    user-select: none;
+    outline: none;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -13,13 +15,35 @@ body {
     background-color: rgb(24, 24, 24);
 }
 
+button {
+    background: none;
+    transition: ease-in-out all 0.3s;
+    border: none;
+    box-shadow: 0;
+}
+
+button:hover {
+    background-color: rgb(27, 27, 27);
+    border-radius: 50px;
+    box-shadow: inset 0 0 5px white;
+}
+
+ul > li {
+    display: inline;
+}
+
+li {
+    width: 60px;
+    height: 60px;
+}
+
 #blurred-background {
     z-index: -10;
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0px;
-    background-image: url('Dissolve.png');
+    background-image: url('temp_background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -32,13 +56,28 @@ body {
     width: 300px;
     height: 300px;
     background-color: rgb(35, 35, 35);
-    margin-top: 25vh;
+    margin-top: 15%;
     border-radius: 5px;
 }
 
 .album-art-image {
     width: inherit;
     height: inherit;
+}
+
+#song-info {
+    bottom: 130px;
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+    text-align: center;
+}
+
+#song-selection-controls {
+    width: 100px;
+    top: 30px;
+    left: 45px;
+    position: absolute;
 }
 
 #controls {
@@ -48,25 +87,81 @@ body {
     width: 100%;
     height: 120px;
     background-color: rgb(35, 35, 35, 0.7);
+    box-shadow: 5px 0px 25px black;;
+}
+
+#play-controls {
+    margin-top: 15px;
+    vertical-align: middle;
+    width: 300px;
+    height: 70px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.control-button > img {
+    width: 25px;
+    height: 25px;
+}
+
+.control-button {
+    vertical-align: middle;
+}
+
+#previous-button {
+    margin-right: 10px;
+}
+
+#next-button {
+    margin-left: 10px;
+}
+
+#play-button > img {
+    width: 50px;
+    height: 50px;
+}
+
+#volume-controls {
+    width: 160px;
+    height: fit-content;
+    right: 45px;
+    position: absolute;
+    top: 30px;
+}
+
+#volume {
+    width: 100px;
+    right: 200px;
+    top: 50px;
+}
+
+#current-volume {
+    top: 5px;
+    position: absolute;
+    right: 20px;
+}
+
+#mute-button {
+    left: -35px;
+    position: absolute;
 }
 
 #seek-controls {
-    top: 20px;
+    position: absolute;
     width: 100%;
-    position: absolute
+    height: 30px;
+    bottom: 10px;
 }
 
-.seeker {
-    width: 80%;
-    margin-top: 70px;
+.slider {
     outline: none;
     -webkit-appearance: none;
     height: 2px;
-    margin-left: 0px;
     background-color: #636363;
 }
 
-.seeker::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 10px;
@@ -76,14 +171,19 @@ body {
     cursor: pointer;
   }
 
+  #seeker {
+    width: 80%;
+    margin-left: 0px;
+  }
+
   #current-play-time {
     position: absolute;
-    margin-top: 64px;
     left: 5%;
+    bottom: 10px;
   }
 
   #audio-length {     
     position: absolute;
     right: 5%;
-    top: 64px;
+    bottom: 10px;
   }
