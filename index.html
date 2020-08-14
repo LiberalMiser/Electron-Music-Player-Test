@@ -4,64 +4,130 @@
         <title>Music Player</title>
         <link href="styles.css" rel="stylesheet"/>
     </head>
-    <body>
+    <body onload="initialize(); findAudioTracks();">
         <div id="blurred-background"></div>
 
-        <center>
-            <div id="album-art">
-                <img src="baseline_album_white_48dp.png" class="album-art-image"/>
-            </div>
+        <div id="side-panel" class="panel">
+            <div class="menu-content" id="menu-content-upper">
+                <div id="menu-button" onclick="toggleMenu(this); toggleSideBar();">
+                    <div id="menu-bar-1" class="menu-bar-1"></div>
+                    <div id="menu-bar-2" class="menu-bar-2"></div>
+                    <div id="menu-bar-3" class="menu-bar-3"></div>
+                </div>
 
-            <div id="song-info">
-                <h3>Song Title</h3>
-                <h5>Artist</h5>
-            </div>
-        </center>
+                <div id="search-bar-holder">
+                    <input name="search" type="text" id="search-bar" placeholder="Search"/>
+                </div>
 
-        <div id="controls">
-            <div id="song-selection-controls">
-                <ul>
-                    <li>
-                        <button name="shuffle-button" id="shuffle-button" class="control-button">
-                            <img src="baseline_shuffle_white_48dp.png"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button name="repeat-button" id="repeat-button" class="control-button">
-                            <img src="baseline_repeat_white_48dp.png"/>
-                        </button>
-                    </li>
-                </ul>
+                <br/>
             </div>
+            <div class="menu-content" id="menu-content-lower">
+                <div class="category-item" tabindex="1">
+                    <div class="category-item-holder">
+                        <img src="music_note-white-48dp.svg" class="icon" class="category-content"/>
+                        <h4 class="category-content category-content-text">&nbsp;Songs</h4>
+                    </div>
+                    
+                </div>
+                <div class="category-item" tabindex="2">
+                    <div class="category-item-holder">
+                        <img src="account_circle-white-18dp.svg" class="icon" class="category-content"/>
+                        <h4 class="category-content category-content-text">&nbsp;Artists</h4>
+                    </div>
+                    
+                </div>
+                <div class="category-item" tabindex="3">
+                    <div class="category-item-holder">
+                        <img src="album-white-18dp.svg" class="icon" class="category-content"/>
+                        <h4 class="category-content category-content-text">&nbsp;Albums</h4>
+                    </div>
+                </div>
+                <div class="category-item" tabindex="4">
+                    <div class="category-item-holder">
+                        <img src="access_time-white-48dp.svg" class="icon" class="category-content"/>
+                        <h4 class="category-content category-content-text">&nbsp;Recent Plays</h4>
+                    </div>
+                </div>
 
-            <div id="play-controls">
-                <center>
-                    <button name="previous-button" id="previous-button" class="control-button">
-                        <img src="baseline_skip_previous_white_48dp.png"/>
-                    </button>
-                    <button name="play-button" id="play-button" class="control-button">
-                        <img src="baseline_play_arrow_white_48dp.png"/>
-                    </button>
-                    <button name="next-button" id="next-button" class="control-button">
-                        <img src="baseline_skip_next_white_48dp.png"/>
-                    </button>
-                </center>
-            </div>
-            <div id="volume-controls">
-                <button name="mute-button" id="mute-button" class="control-button">
-                    <img src="baseline_volume_off_white_48dp.png"/>
-                </button>
-                <input type="range" min="0" max="100" value="75" id="volume" class="slider"/>
-                <p id="current-volume">75%</p>
+                <hr/>
+
+                <div class="category-item" id="playlist-button" tabindex="5">
+                    <div class="category-item-holder">
+                        <img src="playlist_play-white-48dp.svg" class="icon" class="category-content"/>
+                        <h4 class="category-content category-content-text">&nbsp;Playlists</h4>
+                        <span id="add-playlist-button">+</span>
+                    </div>
+                    
+                </div>                
             </div>
         </div>
 
-        <div id="seek-controls">
-            <p id="current-play-time">00:00</p>
-            <center>
-                <input type="range" min="0" max="1000" value="370" class="slider" id="seeker"/>
-            </center>
-            <p id="audio-length">00:00</p>
+        <div id="current-screen-holder">
+            <div id="screen-title">
+                <h1 id="title-heading">Songs</h1>
+                <!--<label>Sort:</label>
+                <p>alphabetically</p>
+                <select name="cars" id="cars">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>-->
+            </div>
+            <div id="track-content"></div>
+            <div id="current-screen">
+            </div>
+        </div>
+
+        <div id="controls" class="panel">
+            <div id="current-track">
+                <img src="account_circle-white-18dp.svg" id="track-photo"/>
+                <h5 class="track-info" id="track-title-current">Song Title</h5>
+                <h4 class="track-info" id="track-album-current">Artist</h4>
+            </div>
+
+            <div id="track-controls">
+                <div id="track-controls-holder">
+                    <button id="shuffle-button" class="control-button">
+                        <img src="shuffle-white-48dp.svg"/>
+                    </button>
+                    <button id="previous-button" class="control-button">
+                        <img src="skip_previous-white-48dp.svg"/>
+                    </button>
+                    <button id="play-button" class="control-button" onclick="togglePlay()">
+                        <img id="play-button-image"/>
+                    </button>
+                    <button id="next-button" class="control-button">
+                        <img src="skip_next-white-48dp.svg"/>
+                    </button>
+                    <button id="repeat-button" class="control-button">
+                        <img src="repeat-white-48dp.svg"/>
+                    </button>
+                </div>
+            </div>
+
+            <div id="volume-controls">
+                <div id="volume-controls-holder">
+                    <button id="mute-button" class="control-button">
+                        <img src="volume_up-white-48dp.svg"/>
+                    </button>
+                    <input type="range" min="0" max="100" value="75" id="volume" class="slider"/>
+                    <p id="current-volume">75%</p>
+                </div>
+
+            </div>
+
+            <div id="seeker-area">
+                <div class="center">
+                    <p id="current-track-time">00:00&nbsp;</p>
+                    <input type="range" min="0" max="1000" value="370" class="slider" id="seeker"/>
+                    <p id="total-track-time">&nbsp;00:00</p>
+                </div>
+                
+            </div>
         </div>
     </body>
+
+    <script src="music_player.js" type="text/javascript"></script>
+    <script src="ui-effects.js" type="text/javascript"></script>
 </html>
